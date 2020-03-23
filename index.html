@@ -276,6 +276,32 @@
             <p>
               Serenity now and no screen time.  
             </p>
+            
+
+            <form name="submit-to-google-sheet">
+  <form name="submit-to-google-sheet">
+    <label>Email</label></br>
+  <input name="email" type="email" placeholder="Email" required><br></br>
+  <label>First Name</label></br>
+  <input name="firstName" type="text" placeholder="First Name"><br></br>
+  <label>Number to Purchase</label></br>
+  <input name="NumberToPurchase" type="number" placeholder="1"><br></br>
+    <label>Number to Donate</label></br>
+  <input name="NumberToDonate" type="number" placeholder="1"><br></br>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwUqoExhgVZsAPXqjISXSkN6bD4JYX4gQ_RfC1lg7lXHhKRWTWR/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
           </div>
 
           <div class="col-lg-4 col-md-4">
